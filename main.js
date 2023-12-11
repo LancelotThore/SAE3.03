@@ -21,7 +21,10 @@ await M.init();
 V.uicalendar.createEvents( M.getEvents('mmi1') );
 
 let prev = document.querySelector('#prev');
-prev.addEventListener("CLICK", () => V.uicalendar.prev());
+prev.addEventListener("click", () => V.uicalendar.prev());
+
+let now = document.querySelector('#now');
+now.addEventListener("click", () => V.uicalendar.today());
 
 let next = document.querySelector('#next');
-next.addEventListener("CLICK", () => V.uicalendar.next());
+next.addEventListener("click", () => V.uicalendar.next());
