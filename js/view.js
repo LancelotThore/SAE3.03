@@ -43,5 +43,7 @@ V.setColor = function() {
 
 let nav = document.querySelector('.nav')
 nav.addEventListener("click", handlerClick_nav)
+let search = document.querySelector('#search');
+search.addEventListener("keyup", handlerClick_nav);
 
 export { V };

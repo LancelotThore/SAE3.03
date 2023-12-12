@@ -52,7 +52,15 @@ class EventManager {
         });
     }
 
-   
+    filterByTag(tag) {
+        let res = this.#events.filter(event => event.summary.includes(tag));
+        return res.map( event => {
+            let obj = event.toObject();
+            obj.calendarId = this.#id;
+            return obj;
+        });
+    }
+
 }
 
 export {EventManager};

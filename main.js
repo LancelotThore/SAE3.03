@@ -95,9 +95,14 @@ function handlerClick_nav(ev) {
     V.uicalendar.setCalendarVisibility(ev.target.id, ev.target.checked);
   }
 
-  if (ev.target.parentNode.id === 'group') {
+  if(ev.target.parentNode.id == 'group') {
     V.uicalendar.clear();
     V.uicalendar.createEvents(M.filterAllByGroup(ev.target.value));
+  }
+
+  if(ev.target.id == "search") {
+    V.uicalendar.clear();
+    console.log(M.filterByTag(ev.target.value))
   }
 }
 
