@@ -26,9 +26,9 @@ V.uicalendar = new Calendar('#calendar', {
  
 });
 
-V.updateColor = function() {
+V.setColor = function() {
   V.uicalendar.setCalendarColor("mmi1", {
-    backgroundColor: '#ab4642',
+    backgroundColor: '#E87956',
   });
   
   V.uicalendar.setCalendarColor("mmi2", {
