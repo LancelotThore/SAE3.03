@@ -19,15 +19,13 @@ V.uicalendar = new Calendar('#calendar', {
   },
   template: {
     time: function(event) {
-      return `<span styxle="color: white;">${event.title}</span>`;
+      return `<span style="color: white;">${event.title}</span>`;
     }
   },
  
  
 });
 
-<<<<<<< Updated upstream
-=======
 V.updateColor = function() {
   V.uicalendar.setCalendarColor("mmi1", {
     backgroundColor: '#ab4642',
@@ -57,5 +55,4 @@ function handlerClick_nav(ev) {
   }
 }
 
->>>>>>> Stashed changes
 export { V };
