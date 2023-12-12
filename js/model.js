@@ -1,4 +1,3 @@
-
 import ical from 'ical';
 import { EventManager } from './class/event-manager';
 
@@ -17,6 +16,14 @@ M.getEvents = function (annee) {
     return null;
 }
 
+M.filterAllByGroup = function(tag){
+    let A1 = Events.mmi1.filterByGroup(tag);
+    let A2 = Events.mmi2.filterByGroup(tag);
+    let A3 = Events.mmi3.filterByGroup(tag);
+
+    return [...A1, ...A2, ...A3];
+}
+
 M.init = async function () {
     let data = await fetch('./data/mmi1.ics');
     data = await data.text();
@@ -24,23 +31,21 @@ M.init = async function () {
     Events.mmi1 = new EventManager('mmi1', 'MMI 1', 'Agenda des MMI 1');
     Events.mmi1.addEvents(data);
 
-
     let data2 = await fetch('./data/mmi2.ics');
     data2 = await data2.text();
     data2 = ical.parseICS(data2);
     Events.mmi2 = new EventManager('mmi2', 'MMI 2', 'Agenda des MMI 2');
     Events.mmi2.addEvents(data2);
 
-
     let data3 = await fetch('./data/mmi3.ics');
     data3 = await data3.text();
     data3 = ical.parseICS(data3);
     Events.mmi3 = new EventManager('mmi3', 'MMI 3', 'Agenda des MMI 3');
     Events.mmi3.addEvents(data3);
+
 }
 
 export { M };
-
 
 /*
     On notera que si tout ce qui est dans ce fichier concerne le modèle, seul ce qui est dans M est exporté (et donc accessible depuis l'extérieur).

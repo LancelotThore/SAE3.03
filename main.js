@@ -19,16 +19,16 @@ window.V = V;
 // loadind data (and wait for it !)
 await M.init();
 
-// creating events in the calendar
-V.uicalendar.createEvents( M.getEvents('mmi1') );
-V.uicalendar.createEvents( M.getEvents('mmi2') );
-V.uicalendar.createEvents( M.getEvents('mmi3') );
-
-V.setColor();
-
 let events1 = M.getEvents("mmi1");
 let events2 = M.getEvents("mmi2");
 let events3 = M.getEvents("mmi3");
+
+// creating events in the calendar
+V.uicalendar.createEvents( events1 );
+V.uicalendar.createEvents( events2 );
+V.uicalendar.createEvents( events3 );
+
+V.setColor();
 
 let changes = {};
 
@@ -79,3 +79,26 @@ events3.forEach(event => {
   }
   V.uicalendar.updateEvent(event.id, event.calendarId, changes);
 });
+
+function handlerClick_nav(ev) {
+  if(ev.target.id == "prev") {
+    V.uicalendar.prev()
+  }
+  if(ev.target.id == "now") {
+    V.uicalendar.today()
+  }
+  if(ev.target.id == "next") {
+    V.uicalendar.next()
+  }
+
+  if(ev.target.id == "mmi1" || ev.target.id == "mmi2" || ev.target.id == "mmi3") {
+    V.uicalendar.setCalendarVisibility(ev.target.id, ev.target.checked);
+  }
+
+  if (ev.target.parentNode.id === 'group') {
+    V.uicalendar.clear();
+    V.uicalendar.createEvents(M.filterAllByGroup(ev.target.value));
+  }
+}
+
+export { handlerClick_nav };

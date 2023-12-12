@@ -1,5 +1,6 @@
 import Calendar from '@toast-ui/calendar';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
+import { handlerClick_nav } from '../main';
 
 let V = {};
 
@@ -42,29 +43,5 @@ V.setColor = function() {
 
 let nav = document.querySelector('.nav')
 nav.addEventListener("click", handlerClick_nav)
-
-function handlerClick_nav(ev) {
-  if(ev.target.id == "prev") {
-    V.uicalendar.prev()
-  }
-  if(ev.target.id == "now") {
-    V.uicalendar.today()
-  }
-  if(ev.target.id == "next") {
-    V.uicalendar.next()
-  }
-
-  if(ev.target.id == "mmi1") {
-    V.uicalendar.setCalendarVisibility("mmi1", ev.target.checked);
-  }
-
-  if(ev.target.id == "mmi2") {
-    V.uicalendar.setCalendarVisibility("mmi2", ev.target.checked);
-  }
-
-  if(ev.target.id == "mmi3") {
-    V.uicalendar.setCalendarVisibility("mmi3", ev.target.checked);
-  }
-}
 
 export { V };
