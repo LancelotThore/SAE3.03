@@ -53,6 +53,18 @@ function handlerClick_nav(ev) {
   if(ev.target.id == "next") {
     V.uicalendar.next()
   }
+
+  if(ev.target.id == "mmi1") {
+    V.uicalendar.setCalendarVisibility("mmi1", ev.target.checked);
+  }
+
+  if(ev.target.id == "mmi2") {
+    V.uicalendar.setCalendarVisibility("mmi2", ev.target.checked);
+  }
+
+  if(ev.target.id == "mmi3") {
+    V.uicalendar.setCalendarVisibility("mmi3", ev.target.checked);
+  }
 }
 
 export { V };
