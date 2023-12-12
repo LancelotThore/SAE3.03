@@ -19,11 +19,43 @@ V.uicalendar = new Calendar('#calendar', {
   },
   template: {
     time: function(event) {
-      return `<span style="color: white;">${event.title}</span>`;
+      return `<span styxle="color: white;">${event.title}</span>`;
     }
   },
  
  
 });
 
+<<<<<<< Updated upstream
+=======
+V.updateColor = function() {
+  V.uicalendar.setCalendarColor("mmi1", {
+    backgroundColor: '#ab4642',
+  });
+  
+  V.uicalendar.setCalendarColor("mmi2", {
+    backgroundColor: '#679690',
+  });
+  
+  V.uicalendar.setCalendarColor("mmi3", {
+    backgroundColor: '#585858',
+  });
+}
+
+let nav = document.querySelector('.nav')
+nav.addEventListener("click", handlerClick_nav)
+
+function handlerClick_nav(ev) {
+  if(ev.target.id == "prev") {
+    V.uicalendar.prev()
+  }
+  if(ev.target.id == "now") {
+    V.uicalendar.today()
+  }
+  if(ev.target.id == "next") {
+    V.uicalendar.next()
+  }
+}
+
+>>>>>>> Stashed changes
 export { V };
