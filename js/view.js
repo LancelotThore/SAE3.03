@@ -26,15 +26,6 @@ V.uicalendar = new Calendar('#calendar', {
  
 });
 
-let prev = document.querySelector('#prev');
-prev.addEventListener("click", () => V.uicalendar.prev());
-
-let now = document.querySelector('#now');
-now.addEventListener("click", () => V.uicalendar.today());
-
-let next = document.querySelector('#next');
-next.addEventListener("click", () => V.uicalendar.next());
-
 V.updateColor = function() {
   V.uicalendar.setCalendarColor("mmi1", {
     backgroundColor: '#ab4642',
@@ -47,6 +38,21 @@ V.updateColor = function() {
   V.uicalendar.setCalendarColor("mmi3", {
     backgroundColor: '#585858',
   });
+}
+
+let nav = document.querySelector('.nav')
+nav.addEventListener("click", handlerClick_nav)
+
+function handlerClick_nav(ev) {
+  if(ev.target.id == "prev") {
+    V.uicalendar.prev()
+  }
+  if(ev.target.id == "now") {
+    V.uicalendar.today()
+  }
+  if(ev.target.id == "next") {
+    V.uicalendar.next()
+  }
 }
 
 export { V };
