@@ -18,6 +18,13 @@ V.uicalendar = new Calendar('#calendar', {
     taskView: false,
     eventView: ['time'],
   },
+  month: {
+    startDayOfWeek: 1,
+    dayNames: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+    workweek: true,
+    taskView: false,
+    eventView: ['time'],
+  },
   template: {
     time: function(event) {
       return `<span style="color: white;">${event.title}</span>`;
@@ -26,20 +33,6 @@ V.uicalendar = new Calendar('#calendar', {
  
  
 });
-/*
-V.setColor = function() {
-  V.uicalendar.setCalendarColor("mmi1", {
-    backgroundColor: '#E87956',
-  });
-  
-  V.uicalendar.setCalendarColor("mmi2", {
-    backgroundColor: '#679690',
-  });
-  
-  V.uicalendar.setCalendarColor("mmi3", {
-    backgroundColor: '#585858',
-  });
-}*/
 
 V.colorMap = {
   mmi1:{CM:"#7B1F30", TD:"#954B59", TP:"#AA6F7A", Autre:"#6D071A"},

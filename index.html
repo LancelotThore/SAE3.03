@@ -11,6 +11,7 @@
     <div class="all">
       <header>
         <nav class="nav" style="display: flex; gap: 2rem;">
+          <input id="search" type="search" name="search">
           <ul id="view">
             <li id="day">Jour</li>
             <li id="week">Semaine</li>
@@ -38,6 +39,8 @@
           </ul>
           <h2>Groupes</h2>
           <select name="group" id="group" multiple>
+            <option value="none">none</option>
+
             <option value="BUT1-G1">BUT1 - G1</option>
             <option value="BUT1-G21">BUT1 - G1-21</option>
             <option value="BUT1-G22">BUT1 - G1-22</option>
@@ -53,7 +56,6 @@
             <option value="BUT3-G22">BUT3 - G1-22</option>
             <option value="BUT3-G3">BUT3 - G3</option>
           </select>
-          <input id="search" type="search" name="search">
         </nav>
       </header>
 
