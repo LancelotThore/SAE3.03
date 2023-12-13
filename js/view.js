@@ -26,7 +26,7 @@ V.uicalendar = new Calendar('#calendar', {
  
  
 });
-
+/*
 V.setColor = function() {
   V.uicalendar.setCalendarColor("mmi1", {
     backgroundColor: '#E87956',
@@ -39,6 +39,12 @@ V.setColor = function() {
   V.uicalendar.setCalendarColor("mmi3", {
     backgroundColor: '#585858',
   });
+}*/
+
+V.colorMap = {
+  mmi1:{CM:"#7B1F30", TD:"#954B59", TP:"#AA6F7A", Autre:"#6D071A"},
+  mmi2:{CM:"#1919FF", TD:"#4747FF", TP:"#6B6BFF", Autre:"#35357F"},
+  mmi3:{CM:"#196631", TD:"#47845A", TP:"#6B9C7B", Autre:"#00561B"}
 }
 
 let nav = document.querySelector('.nav')

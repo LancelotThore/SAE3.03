@@ -19,66 +19,32 @@ window.V = V;
 // loadind data (and wait for it !)
 await M.init();
 
-let events1 = M.getEvents("mmi1");
-let events2 = M.getEvents("mmi2");
-let events3 = M.getEvents("mmi3");
+let all = [...M.getEvents("mmi1"), ...M.getEvents("mmi2"), ...M.getEvents("mmi3")];
+
+for(let ev of all) {
+  ev.backgroundColor = V.colorMap[ev.calendarId][ev.type];
+}
+
+let mmi1 = [];
+let mmi2 = [];
+let mmi3 = [];
+
+all.forEach(Element => {
+  if (Element.calendarId == "mmi1") {
+    mmi1.push(Element)
+  }
+  if (Element.calendarId == "mmi2") {
+    mmi2.push(Element)
+  }
+  if (Element.calendarId == "mmi3") {
+    mmi3.push(Element)
+  }
+})
 
 // creating events in the calendar
-V.uicalendar.createEvents( events1 );
-V.uicalendar.createEvents( events2 );
-V.uicalendar.createEvents( events3 );
-
-V.setColor();
-
-let changes = {};
-
-events1.forEach(event => {
-  if(event.title.includes("CM")) {
-    changes.backgroundColor = "#7B1F30";
-  }
-  else if(event.title.includes("TD")) {
-    changes.backgroundColor = "#954B59";
-  }
-  else if(event.title.includes("TP")) {
-    changes.backgroundColor = "#AA6F7A";
-  }
-  else {
-    changes.backgroundColor = "#6D071A";
-  }
-  V.uicalendar.updateEvent(event.id, event.calendarId, changes);
-});
-
-events2.forEach(event => {
-  if(event.title.includes("CM")) {
-    changes.backgroundColor = "#1919FF";
-  }
-  else if(event.title.includes("TD")) {
-    changes.backgroundColor = "#4747FF";
-  }
-  else if(event.title.includes("TP")) {
-    changes.backgroundColor = "#6B6BFF";
-  }
-  else {
-    changes.backgroundColor = "#35357F";
-  }
-  V.uicalendar.updateEvent(event.id, event.calendarId, changes);
-});
-
-events3.forEach(event => {
-  if(event.title.includes("CM")) {
-    changes.backgroundColor = "#196631";
-  }
-  else if(event.title.includes("TD")) {
-    changes.backgroundColor = "#47845A";
-  }
-  else if(event.title.includes("TP")) {
-    changes.backgroundColor = "#6B9C7B";
-  }
-  else {
-    changes.backgroundColor = "#00561B";
-  }
-  V.uicalendar.updateEvent(event.id, event.calendarId, changes);
-});
+V.uicalendar.createEvents( mmi1 );
+V.uicalendar.createEvents( mmi2 );
+V.uicalendar.createEvents( mmi3 );
 
 function handlerClick_nav(ev) {
   if(ev.target.id == "prev") {
@@ -97,12 +63,21 @@ function handlerClick_nav(ev) {
 
   if(ev.target.parentNode.id == 'group') {
     V.uicalendar.clear();
-    V.uicalendar.createEvents(M.filterAllByGroup(ev.target.value));
+    let grp = M.filterAllByGroup(ev.target.value);
+    for(let el of grp) {
+      el.backgroundColor = V.colorMap[el.calendarId][el.type];
+    }
+    V.uicalendar.createEvents(grp);
   }
 
   if(ev.target.id == "search") {
+    let tags = ev.target.value.split(' ');
     V.uicalendar.clear();
-    V.uicalendar.createEvents(M.filterByTag(ev.target.value))
+    let result = M.filterByTag(tags);
+    for(let ele of result) {
+      ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
+    }
+    V.uicalendar.createEvents(result);
   }
 }
 
