@@ -102,8 +102,7 @@ function handlerClick_nav(ev) {
 
   if(ev.target.id == "search") {
     V.uicalendar.clear();
-    console.log(ev.target.value)
-    console.log(M.filterByTag(ev.target.value))
+    V.uicalendar.createEvents(M.filterByTag(ev.target.value))
   }
 }
 

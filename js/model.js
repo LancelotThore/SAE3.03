@@ -25,9 +25,9 @@ M.filterAllByGroup = function(tag) {
 }
 
 M.filterByTag = function(tag) {
-    let A1 = Events.mmi1.filterByGroup(tag);
-    let A2 = Events.mmi2.filterByGroup(tag);
-    let A3 = Events.mmi3.filterByGroup(tag);
+    let A1 = Events.mmi1.filterByTag(tag);
+    let A2 = Events.mmi2.filterByTag(tag);
+    let A3 = Events.mmi3.filterByTag(tag);
 
     return [...A1, ...A2, ...A3];
 }
