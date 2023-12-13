@@ -79,6 +79,10 @@ function handlerClick_nav(ev) {
     }
     V.uicalendar.createEvents(result);
   }
+
+  if(ev.target.parentNode.id == "view") {
+    V.uicalendar.changeView(ev.target.id);
+  }
 }
 
 export { handlerClick_nav };
