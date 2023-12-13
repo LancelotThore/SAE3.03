@@ -59,6 +59,21 @@ function handlerClick_nav(ev) {
 
   if(ev.target.id == "mmi1" || ev.target.id == "mmi2" || ev.target.id == "mmi3") {
     V.uicalendar.setCalendarVisibility(ev.target.id, ev.target.checked);
+    if(ev.target.checked == false) {
+      let tab = localStorage.getItem("promos");
+      tab = tab.split(",");
+      console.log(tab)
+      tab.forEach(element => {
+        if(element !== ev.target.id) {
+          tab = tab.push(ev.target.id)
+          console.log(tab)
+        }
+        else {
+          tab = tab.filter(element => element !== ev.target.id);
+        }
+        localStorage.setItem("promos", tab.join(","))
+      });
+    }
   }
 
   if(ev.target.parentNode.id == 'group') {
@@ -83,6 +98,26 @@ function handlerClick_nav(ev) {
   if(ev.target.parentNode.id == "view") {
     V.uicalendar.changeView(ev.target.id);
   }
+}
+
+// itération 10
+
+let cookie = function(tab) {
+  tab.forEach(element => {
+    element = document.querySelector("#"+element);
+    element.checked = false;
+  });
+}
+
+if(localStorage.getItem("promos") != null) {
+  let filtre  = localStorage.getItem("promos");
+  filtre = filtre.split(",");
+  console.log(filtre);
+  cookie(filtre)
+}
+else {
+  let filtre = localStorage.setItem("promos", "mmi1");
+  console.log(filtre);
 }
 
 export { handlerClick_nav };
