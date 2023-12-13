@@ -45,4 +45,8 @@ nav.addEventListener("click", handlerClick_nav)
 let search = document.querySelector('#search');
 search.addEventListener("keyup", handlerClick_nav);
 
+if(window.matchMedia("(max-width: 500px)").matches) {
+  V.uicalendar.changeView("day");
+}
+
 export { V };
