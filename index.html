@@ -1,22 +1,36 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="CSS/style.css">
-    <title>MMI Calendar</title>
-  </head>
-  <body>
-  
-    <div class="all">
-      <header>
-        <nav class="nav" style="display: flex; gap: 2rem;">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="CSS/style.css">
+  <title>MMI Calendar</title>
+</head>
+
+<body>
+
+  <div class="all">
+    <header class="contener header">
+
+      <div class="container">
+        <input type="checkbox" id="toggle" aria-label="Btn afficher ou pas le menu" />
+        <label for="toggle" class="label">
+          <svg viewBox="0 0 32 32" width="64" height="64">
+            <rect class="burger__line" x="2" y="6" width="28" height="3" rx="2" fill="#00000"></rect>
+            <rect class="burger__line" x="2" y="15" width="28" height="3" rx="2" fill="#00000"></rect>
+            <rect class="burger__line" x="2" y="24" width="28" height="3" rx="2" fill="#00000"></rect>
+          </svg>
+          <span class="sr-only">Btn afficher ou pas le menu</span>
+        </label>
+
+        <nav class="main-nav nav">
           <input id="search" type="search" name="search">
-          <ul id="view">
-            <li id="day">Jour</li>
-            <li id="week">Semaine</li>
-            <li id="month">Mois</li>
-          </ul>
+          <select name="" id="view">
+            <option id="day" value="day">Jour</option>
+            <option selected id="week" value="week">Semaine</option>
+            <option id="month" value="month">Mois</option>
+          </select>
           <ul>
             <li id="prev">Précédent</li>
             <li id="now">En Cours</li>
@@ -38,7 +52,7 @@
             </li>
           </ul>
           <h2>Groupes</h2>
-          <select name="group" id="group" multiple>
+          <select name="group" id="group">
             <option id="nonce" value="none">none</option>
             <option class="mmi1" value="BUT1-G1">BUT1 - G1</option>
             <option class="mmi1" value="BUT1-G21">BUT1 - G21</option>
@@ -56,12 +70,14 @@
             <option class="mmi3" value="BUT3-G3">BUT3 - G3</option>
           </select>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main id="calendar" style="height: 800px"></main>
-    </div>
+    <main id="calendar"></main>
+  </div>
 
-    <script type="module" src="/main.js"></script>
-    
-  </body>
+  <script type="module" src="/main.js"></script>
+
+</body>
+
 </html>
