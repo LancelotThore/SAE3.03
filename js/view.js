@@ -30,8 +30,6 @@ V.uicalendar = new Calendar('#calendar', {
       return `<span style="color: white;">${event.title}</span>`;
     }
   },
- 
- 
 });
 
 V.colorMap = {
