@@ -41,6 +41,8 @@ all.forEach(Element => {
   }
 })
 
+const p = ["mmi1", "mmi2", "mmi3"];
+
 // creating events in the calendar
 
 V.uicalendar.createEvents(mmi1);
@@ -55,7 +57,6 @@ if (localStorage.getItem("promos") !== null) {
     let checkbox = document.querySelector("#" + promo);
     checkbox.checked = true;
   })
-  let p  = ["mmi1","mmi2","mmi3"];
   p.forEach(element => {
     if (V.settings.promos.includes(element) == false) {
       V.uicalendar.setCalendarVisibility(element, false);
@@ -98,8 +99,7 @@ function handlerClick_nav(ev) {
     }
     tab = tab.join(",");
     localStorage.setItem("promos", tab);
-    console.log(tab);
-    console.log(localStorage)
+    V.settings.promos = tab;
   }
 
   if (ev.target.parentNode.id == 'group') {
@@ -114,12 +114,13 @@ function handlerClick_nav(ev) {
   if (ev.target.id == "search") {
     let tags = ev.target.value.split(' ');
     V.uicalendar.clear();
-    let result = M.filterByTag(tags);
+    let set = V.settings.promos.split(",");
+    let result = M.filterByTag(tags, set);
     for (let ele of result) {
       ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
     }
     V.uicalendar.createEvents(result);
-  }
+  }  
 
   if (ev.target.parentNode.id == "view") {
     V.uicalendar.changeView(ev.target.id);

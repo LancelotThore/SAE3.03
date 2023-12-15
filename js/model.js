@@ -24,12 +24,14 @@ M.filterAllByGroup = function(tag) {
     return [...A1, ...A2, ...A3];
 }
 
-M.filterByTag = function(tag) {
-    let A1 = Events.mmi1.filterByTag(tag);
-    let A2 = Events.mmi2.filterByTag(tag);
-    let A3 = Events.mmi3.filterByTag(tag);
+M.filterByTag = function(tag, promo) {
+    let result = [];
+    promo.forEach(ele => {
+        let A = Events[ele].filterByTag(tag);
+        result = result.concat(A);
+    });
 
-    return [...A1, ...A2, ...A3];
+    return result;
 }
 
 M.init = async function () {
