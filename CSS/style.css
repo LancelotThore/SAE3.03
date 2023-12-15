@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Afacad', sans-serif;
+    font-size: 1rem;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.all {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.header {
+    padding: 1rem;
+    background-color: #EF767A;
+    
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Menu Burger */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    z-index: 100;
+    background-color: transparent;
+}
+
+#toggle {
+    appearance: none;
+    position: absolute;
+}
+
+/* Label */
+.label {
+    display: inline-flex;
+    padding: .5rem;
+    z-index: 10;
+    position: relative;
+    cursor: pointer;
+    background-color: #EF767A;
+    border-radius: 0 50% 50% 0;
+}
+
+/* Nav */
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    background-color: #EF767A;
+    inset: 0 0 0 0%;
+    translate: -100% 0%;
+    gap: 1.5rem;
+}
+
+.main-nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5em;
+}
+
+.main-nav__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-nav__link:hover {
+    cursor: pointer;
+    color: var(--clr-primary-orange);
+}
+
+input[type=checkbox]:checked~.main-nav {
+    translate: 0%;
+}
+
+.svg {
+    width: 2rem;
+    cursor: pointer;
+}
+
+.real_svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+.filtre__group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.filtre__seperator {
+    display: block;
+    width: 50%;
+    height: 1px;
+    background-color: white;
+}
+
+.group__title {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.group__item {
+    user-select: none;
+    font-size: 1.25rem;
+    background-color: white;
+    border-radius: 30px;
+    padding: .75rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.group__item:hover {
+    transform: scale(1.1);
+}
+
+@media (min-width: 50rem) {
+    .container {
+        width: 40%;
+        max-width: 20rem;
+        position: relative;
+        top: 0;
+    }
+
+    .main-nav {
+        translate: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .label {
+        display: none;
+    }
+
+    .nav {
+        flex-direction: row;
+    }
+}
+
+/* Calendrier */
+
+#calendar {
+    width: 100%;
+    height: 100%;
+}
+
+.arrow-icon {
+    height: 2.8em;
+    width: 2.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em auto;
+    cursor: pointer;
+    border-radius: 4px;
+    gap: .5rem;
+}
+
+.left-bar {
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 10px;
+    transform: rotate(35deg);
+    float: right;
+    border-radius: 2px;
+}
+
+.left-bar::after {
+    content: "";
+    background-color: white;
+    width: 40px;
+    height: 10px;
+    display: block;
+    float: right;
+    border-radius: 6px 10px 10px 6px;
+    transition: all .5s cubic-bezier(.25, 1.7, .35, .8);
+    z-index: -1;
+}
+
+.right-bar {
+    background-color: transparent;
+    top: 0px;
+    left: 26px;
+    width: 40px;
+    height: 10px;
+    transform: rotate(-35deg);
+    float: right;
+    border-radius: 2px;
+}
+
+.right-bar::after {
+    content: "";
+    background-color: white;
+    width: 40px;
+    height: 10px;
+    display: block;
+    float: right;
+    border-radius: 6px 10px 10px 6px;
+    transition: all 0.5s cubic-bezier(.25, 1.7, .35, .8);
+    z-index: -1;
+}
+
+input[type=checkbox]:checked~label .left-bar:after {
+    transform-origin: center center;
+    transform: rotate(110deg);
+}
+
+input[type=checkbox]:checked~label .right-bar:after {
+    transform-origin: center center;
+    transform: rotate(-110deg);
+}
+
+.search {
+    max-height: 3rem;
+    background: #fff;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    cursor: pointer;
+    gap: .5rem;
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.search__box {
+    padding: 1rem 0;
+    background: transparent;
+    border: none;
+    outline:none;
+    font-size: 1rem;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.toastui-calendar-panel {
+    height: 100%;
+}
+
+
+#time {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.time__btn {
+    padding: .75rem;
+    border-radius: 30px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: -4px -4px 6px 0 rgba(255, 255, 255, .3),
+    4px 4px 6px 0 rgba(116, 125, 136, .2),
+    inset 4px 4px 6px 0 rgba(255, 255, 255, .2),
+    inset -4px -4px 6px 0 rgba(0, 0, 0, .2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.time__btn:hover {
+    transform: scale(1.1);
+}
+
+.gap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.select-grp {
+    min-width: 12rem;
+    text-align: left;
+    border: none;
+    background: white url('../assets/arrow.svg') no-repeat right 1rem center;
+    appearance: none;
+    scroll-behavior: smooth;
+}
+
+.select-grp:active {
+    transform: none;
+    border: none;
+}
+
+.opt-grp {
+    font-size: 1rem;
+    padding: 0;
+}
+
+.input-promo {
+    cursor: pointer;
+}
