@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +8,8 @@
 html,
 body {
     height: 100%;
+    font-family: 'Afacad', sans-serif;
+    font-size: 1rem;
 }
 
 ul,
@@ -21,8 +25,12 @@ li {
 
 .header {
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin: 1rem;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #EF767A;
+    gap: 2rem;
 }
 
 /* Menu Burger */
@@ -56,7 +64,7 @@ li {
     z-index: 10;
     position: relative;
     cursor: pointer;
-    background-color: antiquewhite;
+    background-color: #EF767A;
     border-radius: 0 50% 50% 0;
 }
 
@@ -67,7 +75,7 @@ li {
     justify-content: center;
     flex-direction: column;
     position: fixed;
-    background-color: green;
+    background-color: #EF767A;
     inset: 0 0 0 0%;
     translate: -100% 0%;
 }
@@ -110,6 +118,7 @@ input[type=checkbox]:checked~.main-nav {
 @media (min-width: 50rem) {
     .container {
         width: 40%;
+        max-width: 20rem;
         position: relative;
     }
 
@@ -122,6 +131,10 @@ input[type=checkbox]:checked~.main-nav {
 
     .label {
         display: none;
+    }
+
+    .header {
+        flex-direction: row;
     }
 }
 /* Calendrier */
@@ -200,15 +213,14 @@ input[type=checkbox]:checked~label .right-bar:after {
 }
 
 .search {
+    max-height: 3rem;
     background: #fff;
-    height: 30px;
     border-radius: 30px;
-    padding: 10px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 1rem;
     cursor: pointer;
-    transition: 0.8s;
     gap: .5rem;
     box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
               -4px -4px 6px 0 rgba(116, 125, 136, .2), 
@@ -217,9 +229,11 @@ input[type=checkbox]:checked~label .right-bar:after {
 }
 
 .search__box {
+    padding: 1rem 0;
     background: transparent;
     border: none;
     outline:none;
+    font-size: 1rem;
 }
 
 .main {
@@ -230,4 +244,29 @@ input[type=checkbox]:checked~label .right-bar:after {
 
 .toastui-calendar-panel {
     height: 100%;
+}
+
+
+#time {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.time__btn {
+    padding: .75rem;
+    border-radius: 30px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: -4px -4px 6px 0 rgba(255, 255, 255, .3),
+    4px 4px 6px 0 rgba(116, 125, 136, .2),
+    inset 4px 4px 6px 0 rgba(255, 255, 255, .2),
+    inset -4px -4px 6px 0 rgba(0, 0, 0, .2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.time__btn:hover {
+    transform: scale(1.1);
 }

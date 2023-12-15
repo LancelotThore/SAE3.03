@@ -35,9 +35,9 @@ V.uicalendar = new Calendar('#calendar', {
 });
 
 V.colorMap = {
-  mmi1:{CM:"#7B1F30", TD:"#954B59", TP:"#AA6F7A", Autre:"#6D071A"},
-  mmi2:{CM:"#1919FF", TD:"#4747FF", TP:"#6B6BFF", Autre:"#35357F"},
-  mmi3:{CM:"#196631", TD:"#47845A", TP:"#6B9C7B", Autre:"#00561B"}
+  mmi1:{CM:"#007295", TD:"#0B9FAF", TP:"#9BD1C2", Autre:"#002C40"},
+  mmi2:{CM:"#D26C12", TD:"#EE9C18", TP:"#E6D7B1", Autre:"#C44212"},
+  mmi3:{CM:"#2D6A4F", TD:"#52B788", TP:"#74C69D", Autre:"#1B4332"}
 }
 
 V.settings = {
@@ -45,10 +45,10 @@ V.settings = {
   groupe: ""
 }
 
-let nav = document.querySelector('.all')
-nav.addEventListener("click", handlerClick_nav)
-let search = document.querySelector('#search');
-search.addEventListener("keyup", handlerClick_nav);
+let all = document.querySelector('.all');
+all.addEventListener("click", handlerClick_nav);
+all.addEventListener("select", handlerClick_nav);
+all.addEventListener("keyup", handlerClick_nav);
 
 if(window.matchMedia("(max-width: 500px)").matches) {
   V.uicalendar.changeView("day");

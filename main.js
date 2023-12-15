@@ -44,10 +44,7 @@ all.forEach(Element => {
 const p = ["mmi1", "mmi2", "mmi3"];
 
 // creating events in the calendar
-
-V.uicalendar.createEvents(mmi1);
-V.uicalendar.createEvents(mmi2);
-V.uicalendar.createEvents(mmi3);
+allCalendar();
 
 if (localStorage.getItem("promos") !== null) {
   let filtre = localStorage.getItem("promos");
@@ -100,14 +97,18 @@ function handlerClick_nav(ev) {
 
   if (ev.target.parentNode.id == 'group') {
     V.uicalendar.clear();
-
-    p.forEach(element => {
-      let result = M.filterByTag('group', ev.target.value, element);
-      for (let ele of result) {
+    if (ev.target.value == "tout") {
+      allCalendar();
+    }
+    else {
+      p.forEach(element => {
+        let result = M.filterByTag('group', ev.target.value, element);
+        for (let ele of result) {
           ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
-      }
-      V.uicalendar.createEvents(result);
-    });
+        }
+        V.uicalendar.createEvents(result);
+      });
+    }
     visibility();
   }
 
@@ -117,16 +118,22 @@ function handlerClick_nav(ev) {
     p.forEach(element => {
       let result = M.filterByTag('tag', tags, element);
       for (let ele of result) {
-          ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
+        ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
       }
       V.uicalendar.createEvents(result);
     });
     visibility();
-  }  
+  }
 
   if (ev.target.parentNode.id == "view") {
     V.uicalendar.changeView(ev.target.id);
   }
+}
+
+function allCalendar() {
+  V.uicalendar.createEvents(mmi1);
+  V.uicalendar.createEvents(mmi2);
+  V.uicalendar.createEvents(mmi3);
 }
 
 function visibility() {

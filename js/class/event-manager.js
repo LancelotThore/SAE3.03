@@ -1,4 +1,4 @@
-import {Event} from './event.js';
+import { Event } from './event.js';
 
 class EventManager {
     #id;
@@ -26,7 +26,7 @@ class EventManager {
     }
 
     addEvents(events) {
-        for(let uid in events) {
+        for (let uid in events) {
             let event = events[uid];
             this.#events.push(new Event(uid, event.summary, event.description, event.start, event.end, event.location));
         }
@@ -43,26 +43,27 @@ class EventManager {
         });
     }
 
-    filterEvents(criteria, value) {
+    filterEvents(critere, value) {
         let res;
-      
-        if (criteria === 'group') {
-          res = this.#events.filter(event => event.groups.includes(value));
-        } else if (criteria === 'tag') {
-          res = this.#events.filter(event =>
-            value.every(tag =>
-              event.summary.toLowerCase().includes(tag.toLowerCase()) || event.location.includes(tag)
-            )
-          );
+
+        if (critere === 'group') {
+            res = this.#events.filter(event => event.groups.includes(value));
         }
-      
+        else if (critere === 'tag') {
+            res = this.#events.filter(event =>
+                value.every(tag =>
+                    event.summary.toLowerCase().includes(tag.toLowerCase()) || event.location.includes(tag)
+                )
+            );
+        }
+
         return res.map(event => {
-          let obj = event.toObject();
-          obj.calendarId = this.#id;
-          return obj;
+            let obj = event.toObject();
+            obj.calendarId = this.#id;
+            return obj;
         });
-    }      
+    }
 
 }
 
-export {EventManager};
+export { EventManager };
