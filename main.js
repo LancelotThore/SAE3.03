@@ -21,7 +21,7 @@ await M.init();
 
 let all = [...M.getEvents("mmi1"), ...M.getEvents("mmi2"), ...M.getEvents("mmi3")];
 
-for(let ev of all) {
+for (let ev of all) {
   ev.backgroundColor = V.colorMap[ev.calendarId][ev.type];
 }
 
@@ -42,82 +42,82 @@ all.forEach(Element => {
 })
 
 // creating events in the calendar
-V.uicalendar.createEvents( mmi1 );
-V.uicalendar.createEvents( mmi2 );
-V.uicalendar.createEvents( mmi3 );
+
+if (localStorage.getItem("promos") !== null) {
+  let filtre = localStorage.getItem("promos");
+  V.settings.promos = filtre;
+  filtre = filtre.split(',');
+  console.log(filtre)
+  filtre.forEach(promo => {
+    let checkbox = document.querySelector("#" + promo);
+    checkbox.checked = true;
+    if (V.settings.promos.includes(promo)) {
+      V.uicalendar.createEvents(all.filter(ev => ev.calendarId === promo));
+    }
+  })
+}
+else {
+  localStorage.setItem("promos", "mmi1,mmi2,mmi3");
+  localStorage.setItem("group", "tout");
+  let promos = V.settings.promos;
+  promos.split(",");
+  promos.forEach(element => {
+    V.uicalendar.createEvents(element)
+  });
+}
 
 function handlerClick_nav(ev) {
-  if(ev.target.id == "prev") {
+  if (ev.target.id == "prev") {
     V.uicalendar.prev()
   }
-  if(ev.target.id == "now") {
+  if (ev.target.id == "now") {
     V.uicalendar.today()
   }
-  if(ev.target.id == "next") {
+  if (ev.target.id == "next") {
     V.uicalendar.next()
   }
 
-  if(ev.target.id == "mmi1" || ev.target.id == "mmi2" || ev.target.id == "mmi3") {
+  if (ev.target.id == "mmi1" || ev.target.id == "mmi2" || ev.target.id == "mmi3") {
     V.uicalendar.setCalendarVisibility(ev.target.id, ev.target.checked);
-    if(ev.target.checked == false) {
-      let tab = localStorage.getItem("promos");
-      tab = tab.split(",");
-      console.log(tab)
-      tab.forEach(element => {
-        if(element !== ev.target.id) {
-          tab = tab.push(ev.target.id)
-          console.log(tab)
-        }
-        else {
-          tab = tab.filter(element => element !== ev.target.id);
-        }
-        localStorage.setItem("promos", tab.join(","))
-      });
+    let tab = localStorage.getItem("promos");
+    tab = tab.split(",");
+    if (tab.includes(ev.target.id)) {
+      let index = tab.indexOf(ev.target.id);
+      if (index !== -1) {
+        tab.splice(index, 1);
+      }
     }
+    else {
+      tab.push(ev.target.id);
+    }
+    tab = tab.join(",");
+    localStorage.setItem("promos", tab);
+    console.log(tab);
+    console.log(localStorage)
   }
 
-  if(ev.target.parentNode.id == 'group') {
+  if (ev.target.parentNode.id == 'group') {
     V.uicalendar.clear();
     let grp = M.filterAllByGroup(ev.target.value);
-    for(let el of grp) {
+    for (let el of grp) {
       el.backgroundColor = V.colorMap[el.calendarId][el.type];
     }
     V.uicalendar.createEvents(grp);
   }
 
-  if(ev.target.id == "search") {
+  if (ev.target.id == "search") {
     let tags = ev.target.value.split(' ');
     V.uicalendar.clear();
     let result = M.filterByTag(tags);
-    for(let ele of result) {
+    for (let ele of result) {
       ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
     }
     V.uicalendar.createEvents(result);
   }
 
-  if(ev.target.parentNode.id == "view") {
+  if (ev.target.parentNode.id == "view") {
     V.uicalendar.changeView(ev.target.id);
   }
-}
-
-// itération 10
-
-let cookie = function(tab) {
-  tab.forEach(element => {
-    element = document.querySelector("#"+element);
-    element.checked = false;
-  });
-}
-
-if(localStorage.getItem("promos") != null) {
-  let filtre  = localStorage.getItem("promos");
-  filtre = filtre.split(",");
-  console.log(filtre);
-  cookie(filtre)
-}
-else {
-  let filtre = localStorage.setItem("promos", "mmi1");
-  console.log(filtre);
 }
 
 export { handlerClick_nav };

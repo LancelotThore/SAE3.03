@@ -40,7 +40,12 @@ V.colorMap = {
   mmi3:{CM:"#196631", TD:"#47845A", TP:"#6B9C7B", Autre:"#00561B"}
 }
 
-let nav = document.querySelector('.nav')
+V.settings = {
+  promos: "",
+  groupe: ""
+}
+
+let nav = document.querySelector('.all')
 nav.addEventListener("click", handlerClick_nav)
 let search = document.querySelector('#search');
 search.addEventListener("keyup", handlerClick_nav);

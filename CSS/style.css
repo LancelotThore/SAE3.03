@@ -16,12 +16,13 @@ li {
 .all {
     display: flex;
     height: 100%;
+    flex-direction: column;
 }
 
 .header {
     display: flex;
-    position: absolute;
-    height: 100%;
+    justify-content: center;
+    margin: 1rem;
 }
 
 /* Menu Burger */
@@ -37,13 +38,13 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-content: space-between;
-    padding: 0.625rem 0;
+    position: absolute;
+    height: 100%;
     z-index: 100;
     background-color: transparent;
 }
 
-input[type=checkbox] {
+#toggle {
     appearance: none;
     position: absolute;
 }
@@ -68,7 +69,7 @@ input[type=checkbox] {
     position: fixed;
     background-color: green;
     inset: 0 0 0 0%;
-    translate: 100% 0;
+    translate: -100% 0%;
 }
 
 .main-nav__list {
@@ -106,18 +107,28 @@ input[type=checkbox]:checked~.main-nav {
     justify-content: space-between;
 }
 
-@media (min-width: 67rem) {
-    .label {}
+@media (min-width: 50rem) {
+    .container {
+        width: 40%;
+        position: relative;
+    }
 
-    .main-nav {}
+    .main-nav {
+        translate: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
 
-    .main-nav__list {}
+    .label {
+        display: none;
+    }
 }
-
 /* Calendrier */
 
 #calendar {
     width: 100%;
+    height: 100%;
 }
 
 .arrow-icon {
@@ -209,4 +220,14 @@ input[type=checkbox]:checked~label .right-bar:after {
     background: transparent;
     border: none;
     outline:none;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.toastui-calendar-panel {
+    height: 100%;
 }
