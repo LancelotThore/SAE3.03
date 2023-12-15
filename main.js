@@ -43,24 +43,30 @@ all.forEach(Element => {
 
 // creating events in the calendar
 
+V.uicalendar.createEvents(mmi1);
+V.uicalendar.createEvents(mmi2);
+V.uicalendar.createEvents(mmi3);
+
 if (localStorage.getItem("promos") !== null) {
   let filtre = localStorage.getItem("promos");
   V.settings.promos = filtre;
   filtre = filtre.split(',');
-  console.log(filtre)
   filtre.forEach(promo => {
     let checkbox = document.querySelector("#" + promo);
     checkbox.checked = true;
-    if (V.settings.promos.includes(promo)) {
-      V.uicalendar.createEvents(all.filter(ev => ev.calendarId === promo));
-    }
   })
+  let p  = ["mmi1","mmi2","mmi3"];
+  p.forEach(element => {
+    if (V.settings.promos.includes(element) == false) {
+      V.uicalendar.setCalendarVisibility(element, false);
+    }
+  });
 }
 else {
   localStorage.setItem("promos", "mmi1,mmi2,mmi3");
   localStorage.setItem("group", "tout");
   let promos = V.settings.promos;
-  promos.split(",");
+  promos = promos.split(",");
   promos.forEach(element => {
     V.uicalendar.createEvents(element)
   });

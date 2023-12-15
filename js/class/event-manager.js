@@ -60,7 +60,6 @@ class EventManager {
             return obj;
         });
     }
-
 }
 
 export {EventManager};
