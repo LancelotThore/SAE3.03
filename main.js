@@ -57,11 +57,7 @@ if (localStorage.getItem("promos") !== null) {
     let checkbox = document.querySelector("#" + promo);
     checkbox.checked = true;
   })
-  p.forEach(element => {
-    if (V.settings.promos.includes(element) == false) {
-      V.uicalendar.setCalendarVisibility(element, false);
-    }
-  });
+  visibility();
 }
 else {
   localStorage.setItem("promos", "mmi1,mmi2,mmi3");
@@ -104,27 +100,41 @@ function handlerClick_nav(ev) {
 
   if (ev.target.parentNode.id == 'group') {
     V.uicalendar.clear();
-    let grp = M.filterAllByGroup(ev.target.value);
-    for (let el of grp) {
-      el.backgroundColor = V.colorMap[el.calendarId][el.type];
-    }
-    V.uicalendar.createEvents(grp);
+
+    p.forEach(element => {
+      let result = M.filterByTag('group', ev.target.value, element);
+      for (let ele of result) {
+          ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
+      }
+      V.uicalendar.createEvents(result);
+    });
+    visibility();
   }
 
   if (ev.target.id == "search") {
     let tags = ev.target.value.split(' ');
     V.uicalendar.clear();
-    let set = V.settings.promos.split(",");
-    let result = M.filterByTag(tags, set);
-    for (let ele of result) {
-      ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
-    }
-    V.uicalendar.createEvents(result);
+    p.forEach(element => {
+      let result = M.filterByTag('tag', tags, element);
+      for (let ele of result) {
+          ele.backgroundColor = V.colorMap[ele.calendarId][ele.type];
+      }
+      V.uicalendar.createEvents(result);
+    });
+    visibility();
   }  
 
   if (ev.target.parentNode.id == "view") {
     V.uicalendar.changeView(ev.target.id);
   }
+}
+
+function visibility() {
+  p.forEach(element => {
+    if (V.settings.promos.includes(element) == false) {
+      V.uicalendar.setCalendarVisibility(element, false);
+    }
+  });
 }
 
 export { handlerClick_nav };

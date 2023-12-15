@@ -43,23 +43,26 @@ class EventManager {
         });
     }
 
-    filterByGroup(group) {
-        let res = this.#events.filter(event => event.groups.includes(group));
-        return res.map( event => {
-            let obj = event.toObject();
-            obj.calendarId = this.#id;
-            return obj;
+    filterEvents(criteria, value) {
+        let res;
+      
+        if (criteria === 'group') {
+          res = this.#events.filter(event => event.groups.includes(value));
+        } else if (criteria === 'tag') {
+          res = this.#events.filter(event =>
+            value.every(tag =>
+              event.summary.toLowerCase().includes(tag.toLowerCase()) || event.location.includes(tag)
+            )
+          );
+        }
+      
+        return res.map(event => {
+          let obj = event.toObject();
+          obj.calendarId = this.#id;
+          return obj;
         });
-    }
+    }      
 
-    filterByTag(tag) {
-        let res = this.#events.filter(event => tag.every(tag => event.summary.toLowerCase().includes(tag.toLowerCase()) || event.location.includes(tag) ) );
-        return res.map( event => {
-            let obj = event.toObject();
-            obj.calendarId = this.#id;
-            return obj;
-        });
-    }
 }
 
 export {EventManager};

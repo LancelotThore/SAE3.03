@@ -16,22 +16,8 @@ M.getEvents = function (annee) {
     return null;
 }
 
-M.filterAllByGroup = function(tag) {
-    let A1 = Events.mmi1.filterByGroup(tag);
-    let A2 = Events.mmi2.filterByGroup(tag);
-    let A3 = Events.mmi3.filterByGroup(tag);
-
-    return [...A1, ...A2, ...A3];
-}
-
-M.filterByTag = function(tag, promo) {
-    let result = [];
-    promo.forEach(ele => {
-        let A = Events[ele].filterByTag(tag);
-        result = result.concat(A);
-    });
-
-    return result;
+M.filterByTag = function(critere, tag, cal) {
+    return Events[cal].filterEvents(critere ,tag);
 }
 
 M.init = async function () {
@@ -52,7 +38,6 @@ M.init = async function () {
     data3 = ical.parseICS(data3);
     Events.mmi3 = new EventManager('mmi3', 'MMI 3', 'Agenda des MMI 3');
     Events.mmi3.addEvents(data3);
-
 }
 
 export { M };
