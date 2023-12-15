@@ -1,35 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calendrier MMI - Suivez vos événements en toute simplicité" />
+  <meta name="keywords" content="calendrier, MMI, événements, planning, organisation" />
   <link rel="stylesheet" href="CSS/style.css">
   <title>MMI Calendar</title>
 </head>
-
 <body>
-
   <div class="all">
     <header class="header">
-      <div class="search">
-        <input placeholder="Rechercher..." id="search" type="search" class="search__box" name="search">
-        <svg class="svg-icon"
-          style="width: 2em; height: 2em;vertical-align: middle;fill: currentColor;overflow: hidden;"
-          viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M398.9 735.5c-185.4 0-336.3-150.9-336.3-336.3C62.7 213.9 213.5 63 398.9 63s336.2 150.9 336.2 336.2c0.1 185.4-150.8 336.3-336.2 336.3m0-597.8c-144.2 0-261.5 117.3-261.5 261.5s117.4 261.5 261.5 261.5c144.2 0 261.5-117.3 261.5-261.5 0.1-144.2-117.3-261.5-261.5-261.5"
-            fill="#00000" />
-          <path
-            d="M865.9 959.6c-23.9 0-47.8-9.1-66-27.3L540.3 672.6c-14.6-14.6-14.6-38.3 0-52.8 14.6-14.6 38.2-14.6 52.8 0l259.6 259.7c7.4 7.4 19 7.4 26.4 0 3.7-3.7 5.5-8.1 5.5-13.2s-1.9-9.5-5.5-13.2L717.9 691.8c-14.6-14.6-14.6-38.2 0-52.8 14.6-14.6 38.2-14.6 52.8 0l161.2 161.2c17.7 17.7 27.4 41.1 27.4 66s-9.7 48.3-27.4 66c-18.2 18.2-42.1 27.4-66 27.4M249.5 436.6c-20.6 0-37.3-16.7-37.3-37.4 0-103 83.8-186.8 186.8-186.8 20.6 0 37.3 16.7 37.3 37.4 0 20.6-16.7 37.3-37.3 37.3-61.8 0-112.1 50.3-112.1 112.1 0 20.6-16.8 37.4-37.4 37.4"
-            fill="#00000" />
-        </svg>
-      </div>
-      <ul id="time">
-        <li class="time__btn" id="prev">Précédent</li>
-        <li class="time__btn" id="now">En Cours</li>
-        <li class="time__btn" id="next">Suivant</li>
-      </ul>
+      <nav class="nav">
+        <div class="search">
+          <input placeholder="Rechercher..." id="search" type="search" class="search__box" name="search" aria-label="Champ de recherche">
+          <svg class="svg-icon"
+            style="width: 2em; height: 2em;vertical-align: middle;fill: currentColor;overflow: hidden;"
+            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M398.9 735.5c-185.4 0-336.3-150.9-336.3-336.3C62.7 213.9 213.5 63 398.9 63s336.2 150.9 336.2 336.2c0.1 185.4-150.8 336.3-336.2 336.3m0-597.8c-144.2 0-261.5 117.3-261.5 261.5s117.4 261.5 261.5 261.5c144.2 0 261.5-117.3 261.5-261.5 0.1-144.2-117.3-261.5-261.5-261.5"
+              fill="#00000" />
+            <path
+              d="M865.9 959.6c-23.9 0-47.8-9.1-66-27.3L540.3 672.6c-14.6-14.6-14.6-38.3 0-52.8 14.6-14.6 38.2-14.6 52.8 0l259.6 259.7c7.4 7.4 19 7.4 26.4 0 3.7-3.7 5.5-8.1 5.5-13.2s-1.9-9.5-5.5-13.2L717.9 691.8c-14.6-14.6-14.6-38.2 0-52.8 14.6-14.6 38.2-14.6 52.8 0l161.2 161.2c17.7 17.7 27.4 41.1 27.4 66s-9.7 48.3-27.4 66c-18.2 18.2-42.1 27.4-66 27.4M249.5 436.6c-20.6 0-37.3-16.7-37.3-37.4 0-103 83.8-186.8 186.8-186.8 20.6 0 37.3 16.7 37.3 37.4 0 20.6-16.7 37.3-37.3 37.3-61.8 0-112.1 50.3-112.1 112.1 0 20.6-16.8 37.4-37.4 37.4"
+              fill="#00000" />
+          </svg>
+        </div>
+        <ul id="time">
+          <li class="time__btn" id="prev">Précédent</li>
+          <li class="time__btn" id="now">En Cours</li>
+          <li class="time__btn" id="next">Suivant</li>
+        </ul>
+      </nav>
     </header>
     <main class="main">
       <div class="container">
@@ -44,48 +45,54 @@
 
         <section class="main-nav">
 
-          <div class="">
-            <h3>Vue</h3>
-            <ul name="" id="view">
-              <li id="day" value="day">Jour</li>
-              <li id="week" value="week">Semaine</li>
-              <li id="month" value="month">Mois</li>
+          <div class="filtre__group">
+            <h3 class="group__title">Vue</h3>
+            <ul class="gap" name="" id="view">
+              <li class="group__item" id="day" value="day">Jour</li>
+              <li class="group__item" id="week" value="week">Semaine</li>
+              <li class="group__item" id="month" value="month">Mois</li>
             </ul>
           </div>
+          <span class="filtre__seperator"></span>
+          <div class="filtre__group">
+            <h3 class="group__title">Promos</h3>
+            <ul class="gap">
+              <li class="group__item">
+                <input class="input-promo" type="checkbox" id="mmi1" name="mmi1">
+                <label class="input-promo label-promo" for="mmi1">MMI 1</label>
+              </li>
+              <li class="group__item">
+                <input class="input-promo" type="checkbox" id="mmi2" name="mmi2">
+                <label class="input-promo label-promo" for="mmi2">MMI 2</label>
+              </li>
+              <li class="group__item">
+                <input class="input-promo" type="checkbox" id="mmi3" name="mmi3">
+                <label class="input-promo label-promo" for="mmi3">MMI 3</label>
+              </li>
+            </ul>
+          </div>
+          <span class="filtre__seperator"></span>
+          <div class="filtre__group">
+            <h3 class="group__title">Groupes</h3>
+            <select class="group__item select-grp" name="group" id="group">
+              <option value="tout">Tout</option>
+              <option class="mmi1 opt-grp" value="BUT1-G1">BUT1 - G1</option>
+              <option class="mmi1 opt-grp" value="BUT1-G21">BUT1 - G21</option>
+              <option class="mmi1 opt-grp" value="BUT1-G22">BUT1 - G22</option>
+              <option class="mmi1 opt-grp" value="BUT1-G3">BUT1 - G3</option>
+  
+              <option class="mmi2 opt-grp" value="BUT2-G1">BUT2 - G1</option>
+              <option class="mmi2 opt-grp" value="BUT2-G21">BUT2 - G21</option>
+              <option class="mmi2 opt-grp" value="BUT2-G22">BUT2 - G22</option>
+              <option class="mmi2 opt-grp" value="BUT2-G3">BUT2 - G3</option>
+
+              <option class="mmi3 opt-grp" value="BUT3-G1">BUT3 - G1</option>
+              <option class="mmi3 opt-grp" value="BUT3-G21">BUT3 - G21</option>
+              <option class="mmi3 opt-grp" value="BUT3-G22">BUT3 - G22</option>
+              <option class="mmi3 opt-grp" value="BUT3-G3">BUT3 - G3</option>
+            </select>
+          </div>
           
-          <h3>Promos</h3>
-          <ul>
-            <li>
-              <input type="checkbox" id="mmi1" name="mmi1">
-              <label for="mmi1">MMI 1</label>
-            </li>
-            <li>
-              <input type="checkbox" id="mmi2" name="mmi2">
-              <label for="mmi2">MMI 2</label>
-            </li>
-            <li>
-              <input type="checkbox" id="mmi3" name="mmi3">
-              <label for="mmi3">MMI 3</label>
-            </li>
-          </ul>
-          <h3>Groupes</h3>
-          <select name="group" id="group">
-            <option value="tout">Tout</option>
-            <option class="mmi1" value="BUT1-G1">BUT1 - G1</option>
-            <option class="mmi1" value="BUT1-G21">BUT1 - G21</option>
-            <option class="mmi1" value="BUT1-G22">BUT1 - G22</option>
-            <option class="mmi1" value="BUT1-G3">BUT1 - G3</option>
-
-            <option class="mmi2" value="BUT2-G1">BUT2 - G1</option>
-            <option class="mmi2" value="BUT2-G21">BUT2 - G21</option>
-            <option class="mmi2" value="BUT2-G22">BUT2 - G22</option>
-            <option class="mmi2" value="BUT2-G3">BUT2 - G3</option>
-
-            <option class="mmi3" value="BUT3-G1">BUT3 - G1</option>
-            <option class="mmi3" value="BUT3-G21">BUT3 - G21</option>
-            <option class="mmi3" value="BUT3-G22">BUT3 - G22</option>
-            <option class="mmi3" value="BUT3-G3">BUT3 - G3</option>
-          </select>
         </section>
       </div>
       <div id="calendar"></div>

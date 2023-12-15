@@ -24,12 +24,16 @@ li {
 }
 
 .header {
+    padding: 1rem;
+    background-color: #EF767A;
+    
+}
+
+.nav {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 1rem;
-    background-color: #EF767A;
     gap: 2rem;
 }
 
@@ -47,7 +51,7 @@ li {
     align-items: center;
     justify-content: center;
     position: absolute;
-    height: 100%;
+    top: 50%;
     z-index: 100;
     background-color: transparent;
 }
@@ -78,6 +82,7 @@ li {
     background-color: #EF767A;
     inset: 0 0 0 0%;
     translate: -100% 0%;
+    gap: 1.5rem;
 }
 
 .main-nav__list {
@@ -115,11 +120,50 @@ input[type=checkbox]:checked~.main-nav {
     justify-content: space-between;
 }
 
+.filtre__group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.filtre__seperator {
+    display: block;
+    width: 50%;
+    height: 1px;
+    background-color: white;
+}
+
+.group__title {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.group__item {
+    user-select: none;
+    font-size: 1.25rem;
+    background-color: white;
+    border-radius: 30px;
+    padding: .75rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.group__item:hover {
+    transform: scale(1.1);
+}
+
 @media (min-width: 50rem) {
     .container {
         width: 40%;
         max-width: 20rem;
         position: relative;
+        top: 0;
     }
 
     .main-nav {
@@ -133,10 +177,11 @@ input[type=checkbox]:checked~.main-nav {
         display: none;
     }
 
-    .header {
+    .nav {
         flex-direction: row;
     }
 }
+
 /* Calendrier */
 
 #calendar {
@@ -269,4 +314,34 @@ input[type=checkbox]:checked~label .right-bar:after {
 
 .time__btn:hover {
     transform: scale(1.1);
+}
+
+.gap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.select-grp {
+    min-width: 12rem;
+    text-align: left;
+    border: none;
+    background: white url('../assets/arrow.svg') no-repeat right 1rem center;
+    appearance: none;
+    scroll-behavior: smooth;
+}
+
+.select-grp:active {
+    transform: none;
+    border: none;
+}
+
+.opt-grp {
+    font-size: 1rem;
+    padding: 0;
+}
+
+.input-promo {
+    cursor: pointer;
 }
